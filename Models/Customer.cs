@@ -3,7 +3,7 @@ namespace rentalapp;
 public class Customer
 {
     private int CustomerId { get; set; }
-    private string Name { get; set; }
+    public string Name { get; private set; }
     private int Age { get; set; }
     private Car? CurrentlyRenting { get; set; }
 
@@ -12,6 +12,11 @@ public class Customer
         CustomerId = customerId;
         Name = name;
         Age = age;
+    }
+
+    public void DisplayDetails()
+    {
+        Console.WriteLine($"{CustomerId}: {Name} ({Age})");
     }
 
     public void ViewCurrentlyRenting()
