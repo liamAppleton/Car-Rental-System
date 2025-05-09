@@ -1,6 +1,6 @@
 namespace rentalapp;
 
-public class Car
+public class Car : IInfoDisplay
 {
     private int CarId { get; set; }
     private string Make { get; set; }

@@ -1,6 +1,6 @@
 namespace rentalapp;
 
-public class Customer
+public class Customer : IInfoDisplay
 {
     private int CustomerId { get; set; }
     public string Name { get; private set; }
