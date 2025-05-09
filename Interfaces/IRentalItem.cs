@@ -2,5 +2,9 @@ namespace rentalapp;
 
 interface IRentalItem
 {
-    bool IsRented { get; set; }
+    bool IsRented { get; }
+
+    void Rent();
+
+    void Return();
 }
