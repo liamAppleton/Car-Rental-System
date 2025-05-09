@@ -2,21 +2,23 @@ namespace rentalapp;
 
 public class Car
 {
+    private int CarId { get; set; }
     private string Make { get; set; }
     private string Model { get; set; }
     private int Year { get; set; }
     private string Colour { get; set; }
 
-    public Car(string make, string model, int year, string colour)
+    public Car(int carId, string make, string model, int year, string colour)
     {
+        CarId = carId;
         Make = make;
         Model = model;
         Year = year;
         Colour = colour;
     }
 
-    public override string ToString()
+    public void DisplayDetails()
     {
-        return $"{Make} | {Model} ({Colour}) [{Year}]";
+        Console.WriteLine($"{Make} | {Model} ({Colour}) [{Year}]");
     }
 }
