@@ -2,12 +2,14 @@ namespace rentalapp;
 
 public class Customer
 {
+    private int CustomerId { get; set; }
     private string Name { get; set; }
     private int Age { get; set; }
     private Car? CurrentlyRenting { get; set; }
 
-    public Customer(string name, int age)
+    public Customer(int customerId, string name, int age)
     {
+        CustomerId = customerId;
         Name = name;
         Age = age;
     }
