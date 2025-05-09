@@ -4,9 +4,9 @@ public class CustomerManagement
 {
     private List<Customer> Customers { get; set; }
 
-    public CustomerManagement(List<Customer> customers)
+    public CustomerManagement()
     {
-        Customers = customers;
+        Customers = new List<Customer>();
     }
 
     public void AddCustomer(Customer customer)
@@ -26,10 +26,18 @@ public class CustomerManagement
 
     public void DisplayAllCustomers()
     {
-        Console.WriteLine("Customers:");
-        foreach (Customer customer in Customers)
+        if (Customers.Count == 0)
         {
-            customer.DisplayDetails();
+            Console.WriteLine("No customers.");
         }
+        else
+        {
+            Console.WriteLine("Customers:");
+            foreach (Customer customer in Customers)
+            {
+                customer.DisplayDetails();
+            }
+        }
+
     }
 }
