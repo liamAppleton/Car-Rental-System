@@ -21,9 +21,9 @@ public class Car : IInfoDisplay, IRentalItem
         IsRented = false;
     }
 
-    public void DisplayDetails()
+    public string DisplayDetails()
     {
-        Console.WriteLine($"[{Type}] {Make} | {Model} ({Colour}) [{Year}]");
+        return $"[{Type}] {Make} | {Model} ({Colour}) [{Year}]";
     }
 
     public void Rent()

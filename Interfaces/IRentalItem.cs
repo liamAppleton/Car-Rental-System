@@ -1,6 +1,6 @@
 namespace rentalapp;
 
-interface IRentalItem
+public interface IRentalItem
 {
     bool IsRented { get; }
 

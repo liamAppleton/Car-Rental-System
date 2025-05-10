@@ -17,9 +17,9 @@ public class Bike : IInfoDisplay, IRentalItem
         IsRented = false;
     }
 
-    public void DisplayDetails()
+    public string DisplayDetails()
     {
-        Console.WriteLine($"[{Type}] {Make} ({Colour})");
+        return $"[{Type}] {Make} ({Colour})";
     }
 
     public void Rent()
