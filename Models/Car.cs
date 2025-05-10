@@ -2,7 +2,7 @@ namespace rentalapp;
 
 public class Car : IInfoDisplay, IRentalItem
 {
-    private int CarId { get; set; }
+    public int CarId { get; private set; }
     public string Type { get; private set; }
     private string Make { get; set; }
     private string Model { get; set; }

@@ -2,7 +2,7 @@ namespace rentalapp;
 
 public class Bike : IInfoDisplay, IRentalItem
 {
-    private int BikeId { get; set; }
+    public int BikeId { get; private set; }
     public string Type { get; private set; }
     private string Make { get; set; }
     private string Colour { get; set; }
