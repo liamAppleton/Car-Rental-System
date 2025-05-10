@@ -7,7 +7,7 @@ public class Car : IInfoDisplay, IRentalItem
     private string Model { get; set; }
     private int Year { get; set; }
     private string Colour { get; set; }
-    public bool IsRented { get; private set; } = false;
+    public bool IsRented { get; private set; }
 
     public Car(int carId, string make, string model, int year, string colour)
     {
@@ -16,11 +16,12 @@ public class Car : IInfoDisplay, IRentalItem
         Model = model;
         Year = year;
         Colour = colour;
+        IsRented = false;
     }
 
     public void DisplayDetails()
     {
-        Console.WriteLine($"{Make} | {Model} ({Colour}) [{Year}]");
+        Console.WriteLine($"[CAR] {Make} | {Model} ({Colour}) [{Year}]");
     }
 
     public void Rent()
@@ -28,7 +29,7 @@ public class Car : IInfoDisplay, IRentalItem
         if (!IsRented)
         {
             IsRented = true;
-            Console.WriteLine($"{CarId} ({Colour} {Make} {Model}) is now rented.");
+            Console.WriteLine($"[CAR] {CarId} ({Colour} {Make} {Model}) is now rented.");
         }
         else Console.WriteLine("Car is already being rented.");
     }
@@ -38,7 +39,7 @@ public class Car : IInfoDisplay, IRentalItem
         if (IsRented)
         {
             IsRented = false;
-            Console.WriteLine($"{CarId} ({Colour} {Make} {Model}) is now returned.");
+            Console.WriteLine($"[CAR] {CarId} ({Colour} {Make} {Model}) is now returned.");
         }
         else Console.WriteLine("Car is already returned.");
     }
