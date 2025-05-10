@@ -14,9 +14,9 @@ public class Customer : IInfoDisplay
         Age = age;
     }
 
-    public void DisplayDetails()
+    public string DisplayDetails()
     {
-        Console.WriteLine($"{CustomerId}: {Name} ({Age})");
+        return $"{CustomerId}: {Name} ({Age})";
     }
 
     public void ViewCurrentlyRenting()
