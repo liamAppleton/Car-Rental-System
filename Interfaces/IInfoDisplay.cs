@@ -1,6 +1,6 @@
 namespace rentalapp;
 
-interface IInfoDisplay
+public interface IInfoDisplay
 {
-    void DisplayDetails();
+    string DisplayDetails();
 }
