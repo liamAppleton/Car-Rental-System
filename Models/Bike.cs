@@ -5,7 +5,7 @@ public class Bike : IInfoDisplay, IRentalItem
     public int BikeId { get; private set; }
     public string Type { get; private set; }
     private string Make { get; set; }
-    private string Colour { get; set; }
+    public string Colour { get; private set; }
     public bool IsRented { get; private set; }
 
     public Bike(int bikeId, string type, string make, string colour)

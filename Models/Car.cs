@@ -7,7 +7,7 @@ public class Car : IInfoDisplay, IRentalItem
     private string Make { get; set; }
     private string Model { get; set; }
     private int Year { get; set; }
-    private string Colour { get; set; }
+    public string Colour { get; private set; }
     public bool IsRented { get; private set; }
 
     public Car(int carId, string type, string make, string model, int year, string colour)
