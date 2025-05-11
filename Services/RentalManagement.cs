@@ -3,8 +3,8 @@ namespace rentalapp;
 public class RentalManagement<T> where T : class, IRentalItem, IInfoDisplay
 {
     private List<Rental> RentedVehicles { get; set; }
-    private List<Car> Cars { get; set; }
-    private List<Bike> Bikes { get; set; }
+    public List<Car> Cars { get; private set; }
+    public List<Bike> Bikes { get; private set; }
     private INotification _notificationSystem;
 
     public RentalManagement(List<Car> cars, List<Bike> bikes, INotification notificationSystem)
