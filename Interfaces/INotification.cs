@@ -2,5 +2,5 @@ namespace rentalapp;
 
 public interface INotification
 {
-    string SendMessage(Customer customer, string message);
+    void SendMessage(string contactDetails, string message);
 }
