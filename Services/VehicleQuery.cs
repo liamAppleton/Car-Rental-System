@@ -1,8 +1,6 @@
-using Microsoft.VisualBasic;
-
 namespace rentalapp;
 
-public class VehicleQuery<T> where T : class, IRentalItem, IInfoDisplay
+public class VehicleQuery<T> where T : class, IRentalItem
 {
     private RentalManagement<T> _rentalManagement;
 

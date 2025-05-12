@@ -35,7 +35,7 @@ public class CustomerManagement
             Console.WriteLine("Customers:");
             foreach (Customer customer in Customers)
             {
-                Console.WriteLine(customer.DisplayDetails());
+                Console.WriteLine(customer.GetDetails());
             }
         }
     }
