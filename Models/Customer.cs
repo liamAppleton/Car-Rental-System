@@ -2,12 +2,12 @@ namespace rentalapp;
 
 public class Customer
 {
-    private int CustomerId { get; set; }
+    private Guid CustomerId { get; set; }
     public string Name { get; private set; }
     private int Age { get; set; }
     private IRentalItem? CurrentlyRenting { get; set; }
 
-    public Customer(int customerId, string name, int age)
+    public Customer(Guid customerId, string name, int age)
     {
         CustomerId = customerId;
         Name = name;

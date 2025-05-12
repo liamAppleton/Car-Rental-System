@@ -2,7 +2,7 @@ namespace rentalapp;
 
 public class Car : IRentalItem
 {
-    public int CarId { get; private set; }
+    public Guid CarId { get; private set; }
     public string Type { get; private set; }
     private string Make { get; set; }
     private string Model { get; set; }
@@ -10,7 +10,7 @@ public class Car : IRentalItem
     public string Colour { get; private set; }
     public bool IsRented { get; private set; }
 
-    public Car(int carId, string type, string make, string model, int year, string colour)
+    public Car(Guid carId, string type, string make, string model, int year, string colour)
     {
         CarId = carId;
         Type = type;
