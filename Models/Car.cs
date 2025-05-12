@@ -1,6 +1,6 @@
 namespace rentalapp;
 
-public class Car : IInfoDisplay, IRentalItem
+public class Car : IRentalItem
 {
     public int CarId { get; private set; }
     public string Type { get; private set; }
@@ -21,7 +21,7 @@ public class Car : IInfoDisplay, IRentalItem
         IsRented = false;
     }
 
-    public string DisplayDetails()
+    public string GetVehicleDetails()
     {
         return $"[{Type}] {Make} | {Model} ({Colour}) [{Year}]";
     }
