@@ -1,6 +1,6 @@
 namespace rentalapp;
 
-public class RentalManagement<T> where T : class, IRentalItem, IInfoDisplay
+public class RentalManagement<T> where T : class, IRentalItem
 {
     private List<Rental> RentedVehicles { get; set; }
     public List<Car> Cars { get; private set; }
@@ -23,14 +23,14 @@ public class RentalManagement<T> where T : class, IRentalItem, IInfoDisplay
     public void AddVehicle(Rental vehicle)
     {
         RentedVehicles.Add(vehicle);
-        string displayMessage = vehicle.Car != null ? vehicle.Car.DisplayDetails() : vehicle.Bike.DisplayDetails();
+        string displayMessage = vehicle.Car != null ? vehicle.Car.GetVehicleDetails() : vehicle.Bike.GetVehicleDetails();
 
         Console.WriteLine($"{displayMessage} added to rentals.");
     }
 
     public void RemoveVehicle(Rental vehicle)
     {
-        string displayMessage = vehicle.Car != null ? vehicle.Car.DisplayDetails() : vehicle.Bike.DisplayDetails();
+        string displayMessage = vehicle.Car != null ? vehicle.Car.GetVehicleDetails() : vehicle.Bike.GetVehicleDetails();
 
         if (!RentedVehicles.Contains(vehicle))
         {
@@ -54,7 +54,7 @@ public class RentalManagement<T> where T : class, IRentalItem, IInfoDisplay
             Console.WriteLine("Rented vehicles:");
             foreach (Rental rental in RentedVehicles)
             {
-                string displayMessage = rental.Car != null ? rental.Car.DisplayDetails() : rental.Bike.DisplayDetails();
+                string displayMessage = rental.Car != null ? rental.Car.GetVehicleDetails() : rental.Bike.GetVehicleDetails();
                 Console.WriteLine(displayMessage);
             }
         }
