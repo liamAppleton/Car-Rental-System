@@ -1,11 +1,11 @@
 namespace rentalapp;
 
-public class Customer : IInfoDisplay
+public class Customer
 {
     private int CustomerId { get; set; }
     public string Name { get; private set; }
     private int Age { get; set; }
-    private Car? CurrentlyRenting { get; set; }
+    private IRentalItem? CurrentlyRenting { get; set; }
 
     public Customer(int customerId, string name, int age)
     {
@@ -14,7 +14,7 @@ public class Customer : IInfoDisplay
         Age = age;
     }
 
-    public string DisplayDetails()
+    public string GetDetails()
     {
         return $"{CustomerId}: {Name} ({Age})";
     }
@@ -23,7 +23,7 @@ public class Customer : IInfoDisplay
     {
         if (CurrentlyRenting != null)
         {
-            CurrentlyRenting.DisplayDetails();
+            CurrentlyRenting.GetVehicleDetails();
         }
         else
         {
