@@ -4,9 +4,9 @@ public class CustomerManagement
 {
     public List<Customer> Customers { get; private set; }
 
-    public CustomerManagement()
+    public CustomerManagement(List<Customer> customers)
     {
-        Customers = new List<Customer>();
+        Customers = customers;
     }
 
     public void AddCustomer(Customer customer)

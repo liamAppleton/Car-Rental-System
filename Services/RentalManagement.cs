@@ -7,9 +7,9 @@ public class RentalManagement<T> where T : class, IRentalItem
     public List<Bike> Bikes { get; private set; }
     private INotification _notificationSystem;
 
-    public RentalManagement(List<Car> cars, List<Bike> bikes, INotification notificationSystem)
+    public RentalManagement(List<Rental> rentedVehicles, List<Car> cars, List<Bike> bikes, INotification notificationSystem)
     {
-        RentedVehicles = new List<Rental>();
+        RentedVehicles = rentedVehicles;
         Cars = cars;
         Bikes = bikes;
         _notificationSystem = notificationSystem;
