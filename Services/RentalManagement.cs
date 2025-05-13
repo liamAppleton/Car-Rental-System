@@ -2,7 +2,7 @@ namespace rentalapp;
 
 public class RentalManagement<T> where T : class, IRentalItem
 {
-    private List<Rental> RentedVehicles { get; set; }
+    public List<Rental> RentedVehicles { get; private set; }
     public List<Car> Cars { get; private set; }
     public List<Bike> Bikes { get; private set; }
     private INotification _notificationSystem;
@@ -42,23 +42,4 @@ public class RentalManagement<T> where T : class, IRentalItem
             Console.WriteLine($"{displayMessage} removed from rentals.");
         }
     }
-
-    public void DisplayAllRentedVehicles()
-    {
-        if (RentedVehicles.Count == 0)
-        {
-            Console.WriteLine("No rented vehicles.");
-        }
-        else
-        {
-            Console.WriteLine("Rented vehicles:");
-            foreach (Rental rental in RentedVehicles)
-            {
-                string displayMessage = rental.Car != null ? rental.Car.GetVehicleDetails() : rental.Bike.GetVehicleDetails();
-                Console.WriteLine(displayMessage);
-            }
-        }
-    }
-
-
 }
