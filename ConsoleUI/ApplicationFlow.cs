@@ -48,7 +48,7 @@ public class ApplicationFlow
     {
         var optionSelection = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
-            .Title("View all:")
+            .Title("\nView all:")
             .AddChoices(new string[]
             {
                     "Customers",
@@ -91,6 +91,31 @@ public class ApplicationFlow
         }
     }
 
+    public void HandleCustomerOpertions()
+    {
+        var optionSelection = AnsiConsole.Prompt(
+            new SelectionPrompt<string>()
+            .Title("\nSelect an operation:")
+            .AddChoices(new string[]
+            {
+                "Add new customer",
+                "Remove existing customer"
+            })
+        );
+
+        switch (optionSelection)
+        {
+            case "Add new customer":
+                _customerConsoleUI.AddInputCustomer();
+                break;
+            case "Remove existing customer":
+                _customerConsoleUI.RemoveInputCustomer();
+                break;
+        }
+
+        _customerConsoleUI.DisplayAllCustomers();
+    }
+
     public void Run()
     {
         bool isQuit = false;
@@ -99,24 +124,32 @@ public class ApplicationFlow
         {
             var selection = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
-                .Title("Select an option:")
+                .Title("\nSelect an option:")
                 .AddChoices(new string[]
                 {
                         "Vehicle display options",
+                        "Customer operations",
                         "Send a message",
                         "Quit"
                 })
             );
 
-            if (selection == "Vehicle display options")
+            switch (selection)
             {
-                VehicleDisplaySelection(VehicleDisplayOptions());
+                case "Vehicle display options":
+                    VehicleDisplaySelection(VehicleDisplayOptions());
+                    break;
+                case "Customer operations":
+                    HandleCustomerOpertions();
+                    break;
+                case "Send a message":
+                    //
+                    break;
+                case "Quit":
+                    isQuit = true;
+                    break;
             }
-            else if (selection == "Send a message")
-            {
 
-            }
-            else if (selection == "Quit") isQuit = true;
         }
     }
 }
