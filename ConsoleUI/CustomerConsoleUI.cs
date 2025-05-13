@@ -1,18 +1,14 @@
 namespace rentalapp;
 using Spectre.Console;
 
-class ConsoleUI<T> where T : class, IRentalItem
+class CustomerConsoleUI
 {
     private CustomerManagement _customerManagement;
-    private RentalManagement<T> _rentalManagement;
 
-    public ConsoleUI(CustomerManagement customerManagement, RentalManagement<T> rentalManagement)
+    public CustomerConsoleUI(CustomerManagement customerManagement)
     {
         _customerManagement = customerManagement;
-        _rentalManagement = rentalManagement;
     }
-
-
 
     public void AddInputCustomer()
     {
@@ -56,8 +52,4 @@ class ConsoleUI<T> where T : class, IRentalItem
 
         AnsiConsole.Write(table);
     }
-
-    // change any methods in other classes that have weighty console writes to strings/lists/whatever so they can be fed through AnsiConsole here
-
-
 }
