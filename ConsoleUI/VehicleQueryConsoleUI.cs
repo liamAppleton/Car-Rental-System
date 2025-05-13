@@ -11,7 +11,7 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
         _rentalManagement = rentalManagement;
     }
 
-    public void DisplayAllCars()
+    private Table InitialiseCarTable()
     {
         var table = new Table();
         table.AddColumn("Make");
@@ -20,6 +20,21 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
         table.AddColumn("Year");
         table.AddColumn("IsRented");
         table.AddColumn("CarId");
+        return table;
+    }
+
+    private Table InitialiseBikeTable()
+    {
+        var table = new Table();
+        table.AddColumn("Colour");
+        table.AddColumn("IsRented?");
+        table.AddColumn("BikeId");
+        return table;
+    }
+
+    public void DisplayAllCars()
+    {
+        var table = InitialiseCarTable();
 
         foreach (Car car in _rentalManagement.Cars)
         {
@@ -31,10 +46,7 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
 
     public void DisplayAllBikes()
     {
-        var table = new Table();
-        table.AddColumn("Colour");
-        table.AddColumn("IsRented?");
-        table.AddColumn("BikeId");
+        var table = InitialiseBikeTable();
 
         foreach (Bike bike in _rentalManagement.Bikes)
         {
@@ -44,5 +56,18 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
         AnsiConsole.Write(table);
     }
 
+    public void DisplayCurrentlyRentedCars()
+    {
+        var table = InitialiseCarTable();
+        List<Car> rentedCars = _rentalManagement.Cars
+            .Where(car => car.IsRented)
+            .ToList();
 
+        foreach (Car car in rentedCars)
+        {
+            table.AddRow(car.Make, car.Model, car.Colour, car.Year.ToString(), car.IsRented.ToString(), car.CarId.ToString());
+        }
+
+        AnsiConsole.Write(table);
+    }
 }
