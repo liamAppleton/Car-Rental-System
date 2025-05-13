@@ -4,7 +4,7 @@ public class Customer
 {
     private Guid CustomerId { get; set; }
     public string Name { get; private set; }
-    private int Age { get; set; }
+    public int Age { get; private set; }
     private IRentalItem? CurrentlyRenting { get; set; }
 
     public Customer(Guid customerId, string name, int age)
@@ -19,15 +19,15 @@ public class Customer
         return $"{CustomerId}: {Name} ({Age})";
     }
 
-    public void ViewCurrentlyRenting()
+    public string GetCurrentlyRenting()
     {
         if (CurrentlyRenting != null)
         {
-            CurrentlyRenting.GetVehicleDetails();
+            return CurrentlyRenting.GetVehicleDetails();
         }
         else
         {
-            Console.WriteLine($"{Name} is not currently renting.");
+            return $"{Name} is not currently renting.";
         }
 
     }
