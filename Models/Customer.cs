@@ -2,7 +2,7 @@ namespace rentalapp;
 
 public class Customer
 {
-    private Guid CustomerId { get; set; }
+    public Guid CustomerId { get; private set; }
     public string Name { get; private set; }
     public int Age { get; private set; }
     private IRentalItem? CurrentlyRenting { get; set; }
