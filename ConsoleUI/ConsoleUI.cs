@@ -12,7 +12,9 @@ class ConsoleUI<T> where T : class, IRentalItem
         _rentalManagement = rentalManagement;
     }
 
-    public Customer CreateCustomerFromInput()
+
+
+    public void AddInputCustomer()
     {
         var name = AnsiConsole.Prompt(
             new TextPrompt<string>("Enter name: "));
@@ -21,7 +23,23 @@ class ConsoleUI<T> where T : class, IRentalItem
         );
         Guid newId = Guid.NewGuid();
 
-        return new Customer(newId, name, age);
+        _customerManagement.AddCustomer(new Customer(newId, name, age));
+    }
+
+    public void RemoveInputCustomer()
+    {
+        var selectedName = AnsiConsole.Prompt(
+            new SelectionPrompt<string>()
+            .Title("Select a customer:")
+            .PageSize(10)
+            .MoreChoicesText("[grey](Move up and down to view more customers)[/]")
+            .AddChoices(_customerManagement.Customers
+                .Select(c => c.Name)
+                .ToArray()));
+
+        Customer? selectedCustomer = _customerManagement.Customers.FirstOrDefault(c => c.Name == selectedName);
+
+        _customerManagement.RemoveCustomer(selectedCustomer);
     }
 
     public void DisplayAllCustomers()
