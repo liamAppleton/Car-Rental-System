@@ -2,7 +2,7 @@ namespace rentalapp;
 
 public class CustomerManagement
 {
-    private List<Customer> Customers { get; set; }
+    public List<Customer> Customers { get; private set; }
 
     public CustomerManagement()
     {
@@ -21,22 +21,6 @@ public class CustomerManagement
         {
             Customers.Remove(customer);
             Console.WriteLine($"{customer.Name} has been removed.");
-        }
-    }
-
-    public void DisplayAllCustomers()
-    {
-        if (Customers.Count == 0)
-        {
-            Console.WriteLine("No customers.");
-        }
-        else
-        {
-            Console.WriteLine("Customers:");
-            foreach (Customer customer in Customers)
-            {
-                Console.WriteLine(customer.GetDetails());
-            }
         }
     }
 }
