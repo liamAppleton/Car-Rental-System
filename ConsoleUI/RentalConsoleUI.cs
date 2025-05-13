@@ -98,7 +98,7 @@ public class RentalConsoleUI<T> where T : class, IRentalItem
     {
         if (_rentalManagement.RentedVehicles.Count == 0)
         {
-            AnsiConsole.WriteLine("[red] No rented vehicles [/]");
+            AnsiConsole.MarkupLine("[red] No rented vehicles [/]");
         }
         else
         {
