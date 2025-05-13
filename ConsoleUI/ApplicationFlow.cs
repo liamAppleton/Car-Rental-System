@@ -11,7 +11,7 @@ public class ApplicationFlow
     private RentalManagement<IRentalItem> _rentalManagement;
     private CustomerConsoleUI _customerConsoleUI;
     private RentalConsoleUI<IRentalItem> _rentalConsoleUI;
-    private VehicleQueryConsoleUI<IRentalItem> _vehicleQueryConsoleUI
+    private VehicleQueryConsoleUI<IRentalItem> _vehicleQueryConsoleUI;
     private EmailNotification _emailNotification;
     private SmsNotification _smsNotification;
 
@@ -32,6 +32,54 @@ public class ApplicationFlow
         _rentalConsoleUI = new RentalConsoleUI<IRentalItem>(_rentalManagement, _customerManagement);
         _vehicleQueryConsoleUI = new VehicleQueryConsoleUI<IRentalItem>(_rentalManagement);
     }
+
+    public string VehicleDisplayOptions()
+    {
+        var optionSelection = AnsiConsole.Prompt(
+            new SelectionPrompt<string>()
+            .Title("View all:")
+            .AddChoices(new string[]
+            {
+                    "Customers",
+                    "Cars",
+                    "Bikes",
+                    "Available cars",
+                    "Available bikes",
+                    "Rented cars",
+                    "Rented bikes"
+            })
+        );
+        return optionSelection;
+    }
+
+    public void VehicleDisplaySelection(string optionSelection)
+    {
+        switch (optionSelection)
+        {
+            case "Customers":
+                _customerConsoleUI.DisplayAllCustomers();
+                break;
+            case "Cars":
+                _vehicleQueryConsoleUI.DisplayAllCars();
+                break;
+            case "Bikes":
+                _vehicleQueryConsoleUI.DisplayAllBikes();
+                break;
+            case "Available cars":
+                _vehicleQueryConsoleUI.DisplayCarsByRentalStatus(false);
+                break;
+            case "Available bikes":
+                _vehicleQueryConsoleUI.DisplayBikesByRentalStatus(false);
+                break;
+            case "Rented cars":
+                _vehicleQueryConsoleUI.DisplayCarsByRentalStatus(true);
+                break;
+            case "Rented bikes":
+                _vehicleQueryConsoleUI.DisplayBikesByRentalStatus(true);
+                break;
+        }
+    }
+
     public void Run()
     {
 
@@ -57,6 +105,16 @@ public class ApplicationFlow
                         "Send a message"
                 })
             );
+
+            if (selection == "Vehicle display options")
+            {
+                var optionSelection = VehicleDisplayOptions();
+
+                switch (optionSelection)
+                {
+
+                }
+            }
 
 
             Console.WriteLine(selection);
