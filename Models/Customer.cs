@@ -27,7 +27,7 @@ public class Customer
         }
         else
         {
-            return $"{Name} is not currently renting.";
+            return "Not currently renting";
         }
 
     }
