@@ -1,3 +1,5 @@
+using Spectre.Console;
+
 namespace rentalapp;
 
 public class Car : IRentalItem
@@ -23,7 +25,7 @@ public class Car : IRentalItem
 
     public string GetVehicleDetails()
     {
-        return $"[{Type}] {Make} | {Model} ({Colour}) [{Year}] - {CarId}";
+        return $"[[{Type}]] {Make} | {Model} ({Colour}) [[{Year}]] - {CarId}";
     }
 
     public void Rent()
@@ -31,7 +33,7 @@ public class Car : IRentalItem
         if (!IsRented)
         {
             IsRented = true;
-            Console.WriteLine($"[{Type}] {CarId} ({Colour} {Make} {Model}) is now rented.");
+            Console.WriteLine($"[[{Type}]] {CarId} ({Colour} {Make} {Model}) is now rented.");
         }
         else Console.WriteLine("Car is already being rented.");
     }
@@ -41,7 +43,7 @@ public class Car : IRentalItem
         if (IsRented)
         {
             IsRented = false;
-            Console.WriteLine($"[{Type}] {CarId} ({Colour} {Make} {Model}) is now returned.");
+            Console.WriteLine($"[[{Type}]] {CarId} ({Colour} {Make} {Model}) is now returned.");
         }
         else Console.WriteLine("Car is already returned.");
     }

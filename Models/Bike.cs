@@ -19,7 +19,7 @@ public class Bike : IRentalItem
 
     public string GetVehicleDetails()
     {
-        return $"[{Type}] {Make} ({Colour}) - {BikeId}";
+        return $"[[{Type}]] {Make} ({Colour}) - {BikeId}";
     }
 
     public void Rent()
@@ -27,7 +27,7 @@ public class Bike : IRentalItem
         if (!IsRented)
         {
             IsRented = true;
-            Console.WriteLine($"[{Type}] {BikeId} ({Colour} {Make}) is now rented.");
+            Console.WriteLine($"[[{Type}]] {BikeId} ({Colour} {Make}) is now rented.");
         }
         else Console.WriteLine("Bike is already being rented.");
     }
@@ -37,7 +37,7 @@ public class Bike : IRentalItem
         if (IsRented)
         {
             IsRented = false;
-            Console.WriteLine($"[{Type}] {BikeId} ({Colour} {Make}) is now returned.");
+            Console.WriteLine($"[[{Type}] ]{BikeId} ({Colour} {Make}) is now returned.");
         }
         else Console.WriteLine("Bike is already returned.");
     }
