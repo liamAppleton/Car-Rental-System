@@ -56,16 +56,31 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
         AnsiConsole.Write(table);
     }
 
-    public void DisplayCurrentlyRentedCars()
+    public void DisplayCarsByRentalStatus(bool isRented)
     {
         var table = InitialiseCarTable();
         List<Car> rentedCars = _rentalManagement.Cars
-            .Where(car => car.IsRented)
+            .Where(car => isRented ? car.IsRented : !car.IsRented)
             .ToList();
 
         foreach (Car car in rentedCars)
         {
             table.AddRow(car.Make, car.Model, car.Colour, car.Year.ToString(), car.IsRented.ToString(), car.CarId.ToString());
+        }
+
+        AnsiConsole.Write(table);
+    }
+
+    public void DisplayBikesByRentalStatus(bool isRented)
+    {
+        var table = InitialiseBikeTable();
+        List<Bike> rentedBikes = _rentalManagement.Bikes
+            .Where(bike => isRented ? bike.IsRented : !bike.IsRented)
+            .ToList();
+
+        foreach (Bike bike in rentedBikes)
+        {
+            table.AddRow(bike.Colour, bike.IsRented.ToString(), bike.BikeId.ToString());
         }
 
         AnsiConsole.Write(table);
