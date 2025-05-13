@@ -23,7 +23,7 @@ public class Car : IRentalItem
 
     public string GetVehicleDetails()
     {
-        return $"[{Type}] {Make} | {Model} ({Colour}) [{Year}]";
+        return $"[{Type}] {Make} | {Model} ({Colour}) [{Year}] - {CarId}";
     }
 
     public void Rent()

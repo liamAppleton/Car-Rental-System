@@ -19,7 +19,7 @@ public class Bike : IRentalItem
 
     public string GetVehicleDetails()
     {
-        return $"[{Type}] {Make} ({Colour})";
+        return $"[{Type}] {Make} ({Colour}) - {BikeId}";
     }
 
     public void Rent()
