@@ -9,6 +9,16 @@ public class VehicleQuery<T> where T : class, IRentalItem
         _rentalManagement = rentalManagement;
     }
 
+    public List<Car> GetAllCars()
+    {
+        return _rentalManagement.Cars.ToList();
+    }
+
+    public List<Bike> GetAllBikes()
+    {
+        return _rentalManagement.Bikes.ToList();
+    }
+
     public List<Car> GetCurrentlyRentedCars()
     {
         return _rentalManagement.Cars
