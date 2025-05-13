@@ -50,6 +50,7 @@ class CustomerConsoleUI
             table.AddRow(customer.Name, customer.Age.ToString(), customer.GetCurrentlyRenting());
         }
 
+        AnsiConsole.MarkupLine($"\n[green bold]Customers[/]");
         AnsiConsole.Write(table);
     }
 }

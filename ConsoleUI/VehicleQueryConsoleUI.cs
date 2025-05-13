@@ -41,6 +41,7 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
             table.AddRow(car.Make, car.Model, car.Colour, car.Year.ToString(), car.IsRented.ToString(), car.CarId.ToString());
         }
 
+        AnsiConsole.MarkupLine("\n[blue bold]Cars[/]");
         AnsiConsole.Write(table);
     }
 
@@ -53,6 +54,7 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
             table.AddRow(bike.Colour, bike.IsRented.ToString(), bike.BikeId.ToString());
         }
 
+        AnsiConsole.MarkupLine("\n[yellow bold]Bikes[/]");
         AnsiConsole.Write(table);
     }
 
@@ -68,6 +70,7 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
             table.AddRow(car.Make, car.Model, car.Colour, car.Year.ToString(), car.IsRented.ToString(), car.CarId.ToString());
         }
 
+        AnsiConsole.MarkupLine($"\n[blue bold]{(isRented ? "Rented" : "Available")} Cars[/]");
         AnsiConsole.Write(table);
     }
 
@@ -83,6 +86,7 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
             table.AddRow(bike.Colour, bike.IsRented.ToString(), bike.BikeId.ToString());
         }
 
+        AnsiConsole.MarkupLine($"\n[red bold]{(isRented ? "Rented" : "Available")} Bikes[/]");
         AnsiConsole.Write(table);
     }
 }
