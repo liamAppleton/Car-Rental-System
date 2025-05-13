@@ -70,6 +70,30 @@ public class RentalConsoleUI<T> where T : class, IRentalItem
         _rentalManagement.AddVehicle(new Rental(rentalId, customerId, car, bike));
     }
 
+    public void RemoveInputRental()
+    {
+        string[] vehiclesDetails = _rentalManagement.Cars.Cast<IRentalItem>()
+        .Concat(_rentalManagement.Bikes.Cast<IRentalItem>())
+        .Select(vehicle => vehicle.GetVehicleDetails())
+        .ToArray();
+
+        var rental = AnsiConsole.Prompt(
+            new SelectionPrompt<string>()
+            .Title("Select a rental to remove: ")
+            .PageSize(10)
+            .MoreChoicesText("[grey](Move up and down to view more rentals)[/]")
+            .AddChoices(vehiclesDetails)
+        );
+
+        Regex id = new Regex(@"- ([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$");
+        Match idMatch = id.Match(rental);
+
+        Rental? selectedRental = _rentalManagement.RentedVehicles
+            .FirstOrDefault(r => r.RentalId == Guid.Parse(idMatch.Groups[1].Value));
+
+        _rentalManagement.RemoveVehicle(selectedRental);
+    }
+
     public void DisplayAllRentalVehicles()
     {
         if (_rentalManagement.RentedVehicles.Count == 0)
