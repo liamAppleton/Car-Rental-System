@@ -6,9 +6,9 @@ public class Car : IRentalItem
 {
     public Guid CarId { get; private set; }
     public string Type { get; private set; }
-    private string Make { get; set; }
-    private string Model { get; set; }
-    private int Year { get; set; }
+    public string Make { get; private set; }
+    public string Model { get; private set; }
+    public int Year { get; private set; }
     public string Colour { get; private set; }
     public bool IsRented { get; private set; }
 

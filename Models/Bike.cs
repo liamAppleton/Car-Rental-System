@@ -4,7 +4,7 @@ public class Bike : IRentalItem
 {
     public Guid BikeId { get; private set; }
     public string Type { get; private set; }
-    private string Make { get; set; }
+    public string Make { get; private set; }
     public string Colour { get; private set; }
     public bool IsRented { get; private set; }
 
