@@ -43,6 +43,7 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
 
         AnsiConsole.MarkupLine("\n[blue bold]Cars[/]");
         AnsiConsole.Write(table);
+        AnsiConsole.WriteLine();
     }
 
     public void DisplayAllBikes()
@@ -56,6 +57,7 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
 
         AnsiConsole.MarkupLine("\n[yellow bold]Bikes[/]");
         AnsiConsole.Write(table);
+        AnsiConsole.WriteLine();
     }
 
     public void DisplayCarsByRentalStatus(bool isRented)
@@ -72,6 +74,7 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
 
         AnsiConsole.MarkupLine($"\n[blue bold]{(isRented ? "Rented" : "Available")} Cars[/]");
         AnsiConsole.Write(table);
+        AnsiConsole.WriteLine();
     }
 
     public void DisplayBikesByRentalStatus(bool isRented)
@@ -88,5 +91,6 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
 
         AnsiConsole.MarkupLine($"\n[red bold]{(isRented ? "Rented" : "Available")} Bikes[/]");
         AnsiConsole.Write(table);
+        AnsiConsole.WriteLine();
     }
 }

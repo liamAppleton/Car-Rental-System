@@ -52,5 +52,6 @@ class CustomerConsoleUI
 
         AnsiConsole.MarkupLine($"\n[green bold]Customers[/]");
         AnsiConsole.Write(table);
+        AnsiConsole.WriteLine();
     }
 }
