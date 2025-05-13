@@ -18,11 +18,11 @@ public class DataSeeder
     {
         return new List<Car>
             {
-                new Car(Guid.NewGuid(), "Sedan", "Toyota", "Camry", 2020, "Black"),
-                new Car(Guid.NewGuid(), "SUV", "Ford", "Escape", 2021, "White"),
-                new Car(Guid.NewGuid(), "Hatchback", "Honda", "Civic", 2019, "Red"),
-                new Car(Guid.NewGuid(), "Convertible", "BMW", "Z4", 2022, "Blue"),
-                new Car(Guid.NewGuid(), "Truck", "Chevrolet", "Silverado", 2023, "Silver")
+                new Car(Guid.NewGuid(), "CAR", "Toyota", "Camry", 2020, "Black"),
+                new Car(Guid.NewGuid(), "CAR", "Ford", "Escape", 2021, "White"),
+                new Car(Guid.NewGuid(), "CAR", "Honda", "Civic", 2019, "Red"),
+                new Car(Guid.NewGuid(), "CAR", "BMW", "Z4", 2022, "Blue"),
+                new Car(Guid.NewGuid(), "CAR", "Chevrolet", "Silverado", 2023, "Silver")
             };
     }
 
