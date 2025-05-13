@@ -27,7 +27,7 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
     {
         var table = new Table();
         table.AddColumn("Colour");
-        table.AddColumn("IsRented?");
+        table.AddColumn("IsRented");
         table.AddColumn("BikeId");
         return table;
     }
