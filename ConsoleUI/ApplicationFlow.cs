@@ -44,9 +44,14 @@ public class ApplicationFlow
         Console.ReadLine();
     }
 
-    public string VehicleDisplayOptions()
+    public void VehicleDisplayOperations()
     {
-        var optionSelection = AnsiConsole.Prompt(
+
+
+        bool isReturn = false;
+        while (!isReturn)
+        {
+            var optionSelection = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
             .Title("\nView all:")
             .AddChoices(new string[]
@@ -57,63 +62,74 @@ public class ApplicationFlow
                     "Available cars",
                     "Available bikes",
                     "Rented cars",
-                    "Rented bikes"
+                    "Rented bikes",
+                    "Return"
             })
-        );
-        return optionSelection;
-    }
+            );
 
-    public void VehicleDisplaySelection(string optionSelection)
-    {
-        switch (optionSelection)
-        {
-            case "Customers":
-                _customerConsoleUI.DisplayAllCustomers();
-                break;
-            case "Cars":
-                _vehicleQueryConsoleUI.DisplayAllCars();
-                break;
-            case "Bikes":
-                _vehicleQueryConsoleUI.DisplayAllBikes();
-                break;
-            case "Available cars":
-                _vehicleQueryConsoleUI.DisplayCarsByRentalStatus(false);
-                break;
-            case "Available bikes":
-                _vehicleQueryConsoleUI.DisplayBikesByRentalStatus(false);
-                break;
-            case "Rented cars":
-                _vehicleQueryConsoleUI.DisplayCarsByRentalStatus(true);
-                break;
-            case "Rented bikes":
-                _vehicleQueryConsoleUI.DisplayBikesByRentalStatus(true);
-                break;
+            switch (optionSelection)
+            {
+                case "Customers":
+                    _customerConsoleUI.DisplayAllCustomers();
+                    break;
+                case "Cars":
+                    _vehicleQueryConsoleUI.DisplayAllCars();
+                    break;
+                case "Bikes":
+                    _vehicleQueryConsoleUI.DisplayAllBikes();
+                    break;
+                case "Available cars":
+                    _vehicleQueryConsoleUI.DisplayCarsByRentalStatus(false);
+                    break;
+                case "Available bikes":
+                    _vehicleQueryConsoleUI.DisplayBikesByRentalStatus(false);
+                    break;
+                case "Rented cars":
+                    _vehicleQueryConsoleUI.DisplayCarsByRentalStatus(true);
+                    break;
+                case "Rented bikes":
+                    _vehicleQueryConsoleUI.DisplayBikesByRentalStatus(true);
+                    break;
+                case "Return":
+                    isReturn = true;
+                    break;
+            }
         }
+
     }
 
     public void HandleCustomerOpertions()
     {
-        var optionSelection = AnsiConsole.Prompt(
-            new SelectionPrompt<string>()
-            .Title("\nSelect an operation:")
-            .AddChoices(new string[]
-            {
-                "Add new customer",
-                "Remove existing customer"
-            })
-        );
-
-        switch (optionSelection)
+        bool isReturn = false;
+        while (!isReturn)
         {
-            case "Add new customer":
-                _customerConsoleUI.AddInputCustomer();
-                break;
-            case "Remove existing customer":
-                _customerConsoleUI.RemoveInputCustomer();
-                break;
+            var optionSelection = AnsiConsole.Prompt(
+             new SelectionPrompt<string>()
+             .Title("\nSelect an operation:")
+             .AddChoices(new string[]
+             {
+                "Add new customer",
+                "Remove existing customer",
+                "Return"
+             })
+            );
+
+            switch (optionSelection)
+            {
+                case "Add new customer":
+                    _customerConsoleUI.AddInputCustomer();
+                    break;
+                case "Remove existing customer":
+                    _customerConsoleUI.RemoveInputCustomer();
+                    break;
+                case "Return":
+                    isReturn = true;
+                    break;
+            }
+
+            _customerConsoleUI.DisplayAllCustomers();
         }
 
-        _customerConsoleUI.DisplayAllCustomers();
     }
 
     public void Run()
@@ -137,7 +153,7 @@ public class ApplicationFlow
             switch (selection)
             {
                 case "Vehicle display options":
-                    VehicleDisplaySelection(VehicleDisplayOptions());
+                    VehicleDisplayOperations();
                     break;
                 case "Customer operations":
                     HandleCustomerOpertions();
