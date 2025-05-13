@@ -33,6 +33,17 @@ public class ApplicationFlow
         _vehicleQueryConsoleUI = new VehicleQueryConsoleUI<IRentalItem>(_rentalManagement);
     }
 
+    public void DisplayAppIntro()
+    {
+        AnsiConsole.MarkupLine("[bold underline green]Welcome to Car Rental Enterprise[/]\n");
+        AnsiConsole.MarkupLine("[blue]------------------------------------------[/]");
+        AnsiConsole.MarkupLine("[yellow]Manage your fleet of cars and bikes seamlessly[/]");
+        AnsiConsole.MarkupLine("[blue]------------------------------------------[/]\n");
+        AnsiConsole.MarkupLine("[italic dim]Press Enter to continue...[/]");
+
+        Console.ReadLine();
+    }
+
     public string VehicleDisplayOptions()
     {
         var optionSelection = AnsiConsole.Prompt(
@@ -82,17 +93,7 @@ public class ApplicationFlow
 
     public void Run()
     {
-
-
-
         bool isQuit = false;
-        AnsiConsole.MarkupLine("[bold underline green]Welcome to Car Rental Enterprise[/]\n");
-        AnsiConsole.MarkupLine("[blue]------------------------------------------[/]");
-        AnsiConsole.MarkupLine("[yellow]Manage your fleet of cars and bikes seamlessly[/]");
-        AnsiConsole.MarkupLine("[blue]------------------------------------------[/]\n");
-        AnsiConsole.MarkupLine("[italic dim]Press Enter to continue...[/]");
-
-        Console.ReadLine();
 
         while (!isQuit)
         {
@@ -102,23 +103,20 @@ public class ApplicationFlow
                 .AddChoices(new string[]
                 {
                         "Vehicle display options",
-                        "Send a message"
+                        "Send a message",
+                        "Quit"
                 })
             );
 
             if (selection == "Vehicle display options")
             {
-                var optionSelection = VehicleDisplayOptions();
-
-                switch (optionSelection)
-                {
-
-                }
+                VehicleDisplaySelection(VehicleDisplayOptions());
             }
+            else if (selection == "Send a message")
+            {
 
-
-            Console.WriteLine(selection);
-            isQuit = true;
+            }
+            else if (selection == "Quit") isQuit = true;
         }
     }
 }
