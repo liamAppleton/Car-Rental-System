@@ -30,10 +30,10 @@ public class ApplicationFlow
 
         _customerConsoleUI = new CustomerConsoleUI(_customerManagement);
         _rentalConsoleUI = new RentalConsoleUI<IRentalItem>(_rentalManagement, _customerManagement);
-        _vehicleQueryConsoleUI = new VehicleQueryConsoleUI<IRentalItem>(_rentalManagement);
+        _vehicleQueryConsoleUI = new VehicleQueryConsoleUI<IRentalItem>(_rentalManagement, _customerManagement);
     }
 
-    public void DisplayAppIntro()
+    private void DisplayAppIntro()
     {
         AnsiConsole.MarkupLine("[bold underline green]Welcome to Car Rental Enterprise[/]\n");
         AnsiConsole.MarkupLine("[blue]------------------------------------------[/]");
@@ -44,7 +44,7 @@ public class ApplicationFlow
         Console.ReadLine();
     }
 
-    public void VehicleDisplayOperations()
+    private void VehicleDisplayOperations()
     {
 
 
@@ -98,7 +98,7 @@ public class ApplicationFlow
 
     }
 
-    public void HandleCustomerOpertions()
+    private void HandleCustomerOpertions()
     {
         bool isReturn = false;
         while (!isReturn)
@@ -129,7 +129,37 @@ public class ApplicationFlow
 
             _customerConsoleUI.DisplayAllCustomers();
         }
+    }
 
+    private void HandleRentalOperations()
+    {
+        bool isReturn = false;
+        while (!isReturn)
+        {
+            var optionSelection = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                .Title("Select an operation:")
+                .AddChoices(new string[]
+                {
+                    "Add vehicle to rentals",
+                    "Remove vehicle from rentals",
+                    "Return"
+                })
+            );
+
+            switch (optionSelection)
+            {
+                case "Add vehicle to rentals":
+                    _rentalConsoleUI.AddInputRental();
+                    break;
+                case "Remove vehicle from rentals":
+                    _rentalConsoleUI.RemoveInputRental();
+                    break;
+                case "Return":
+                    isReturn = true;
+                    break;
+            }
+        }
     }
 
     public void Run()
@@ -145,6 +175,7 @@ public class ApplicationFlow
                 {
                         "Vehicle display options",
                         "Customer operations",
+                        "Rental operations",
                         "Send a message",
                         "Quit"
                 })
@@ -157,6 +188,9 @@ public class ApplicationFlow
                     break;
                 case "Customer operations":
                     HandleCustomerOpertions();
+                    break;
+                case "Rental operations":
+                    HandleRentalOperations();
                     break;
                 case "Send a message":
                     //
