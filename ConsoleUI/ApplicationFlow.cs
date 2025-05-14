@@ -46,8 +46,6 @@ public class ApplicationFlow
 
     private void VehicleDisplayOperations()
     {
-
-
         bool isReturn = false;
         while (!isReturn)
         {
@@ -164,8 +162,9 @@ public class ApplicationFlow
 
     public void Run()
     {
-        bool isQuit = false;
+        DisplayAppIntro();
 
+        bool isQuit = false;
         while (!isQuit)
         {
             var selection = AnsiConsole.Prompt(
