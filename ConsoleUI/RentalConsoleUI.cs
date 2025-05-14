@@ -60,14 +60,15 @@ public class RentalConsoleUI<T> where T : class, IRentalItem
                 .ToArray())
         );
 
-        Guid customerId = _customerManagement.Customers
+        Customer? customer = _customerManagement.Customers
             .Where(c => c.Name == customerName)
-            .Select(c => c.CustomerId)
             .FirstOrDefault();
+
+        customer.CurrentlyRenting = car != null ? car : bike;
 
         Guid rentalId = Guid.NewGuid();
 
-        _rentalManagement.AddVehicle(new Rental(rentalId, customerId, car, bike));
+        _rentalManagement.AddVehicle(new Rental(rentalId, customer.CustomerId, car, bike));
     }
 
     public void RemoveInputRental()
