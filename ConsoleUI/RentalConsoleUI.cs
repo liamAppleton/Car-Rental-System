@@ -97,6 +97,12 @@ public class RentalConsoleUI<T> where T : class, IRentalItem
                 (r.Car != null ? r.Car.CarId : r.Bike.BikeId)
                 == Guid.Parse(idMatch.Groups[1].Value));
 
+            Customer? customer = _customerManagement.Customers
+                .Where(c => c.CustomerId == selectedRental.CustomerId)
+                .FirstOrDefault();
+
+            customer.CurrentlyRenting = null;
+
             _rentalManagement.RemoveVehicle(selectedRental);
         }
         catch (Exception ex)
