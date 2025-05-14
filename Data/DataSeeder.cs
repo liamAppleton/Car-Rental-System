@@ -6,11 +6,11 @@ public class DataSeeder
     {
         return new List<Bike>
             {
-                new Bike(Guid.NewGuid(), "Mountain", "Trek", "Blue"),
-                new Bike(Guid.NewGuid(), "Road", "Giant", "Red"),
-                new Bike(Guid.NewGuid(), "Hybrid", "Cannondale", "Green"),
-                new Bike(Guid.NewGuid(), "Electric", "Specialized", "Black"),
-                new Bike(Guid.NewGuid(), "BMX", "Mongoose", "Yellow")
+                new Bike(Guid.NewGuid(), "BIKE", "Trek", "Blue"),
+                new Bike(Guid.NewGuid(), "BIKE", "Giant", "Red"),
+                new Bike(Guid.NewGuid(), "BIKE", "Cannondale", "Green"),
+                new Bike(Guid.NewGuid(), "BIKE", "Specialized", "Black"),
+                new Bike(Guid.NewGuid(), "BIKE", "Mongoose", "Yellow")
             };
     }
 
