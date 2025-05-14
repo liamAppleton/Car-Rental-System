@@ -24,33 +24,35 @@ public class RentalManagement<T> where T : class, IRentalItem
     {
         RentedVehicles.Add(vehicle);
 
-        string displayMessage;
+        string vehicleDetails = vehicle.Car != null ? vehicle.Car.GetVehicleDetails() : vehicle.Bike.GetVehicleDetails();
         if (vehicle.Car != null)
         {
-            displayMessage = vehicle.Car.GetVehicleDetails();
             vehicle.Car.Rent();
         }
         else
         {
-            displayMessage = vehicle.Bike.GetVehicleDetails();
             vehicle.Bike.Rent();
         }
 
-        Console.WriteLine($"{displayMessage} added to rentals.");
+        Console.WriteLine($"{vehicleDetails} added to rentals.");
     }
 
     public void RemoveVehicle(Rental vehicle)
     {
-        string displayMessage = vehicle.Car != null ? vehicle.Car.GetVehicleDetails() : vehicle.Bike.GetVehicleDetails();
-        // Return() needs to be called here
-        if (!RentedVehicles.Contains(vehicle))
+        string vehicleDetails = vehicle.Car != null ? vehicle.Car.GetVehicleDetails() : vehicle.Bike.GetVehicleDetails();
+        string displayMessage = !RentedVehicles.Contains(vehicle) ? "not currently rented." : "removed from rentals";
+
+        if (vehicle.Car != null)
         {
-            Console.WriteLine($"{displayMessage} not currently rented.");
+            RentedVehicles.Remove(vehicle);
+            vehicle.Car.Return();
         }
         else
         {
             RentedVehicles.Remove(vehicle);
-            Console.WriteLine($"{displayMessage} removed from rentals.");
+            vehicle.Bike.Return();
         }
+
+        Console.WriteLine($"{vehicleDetails} {displayMessage}");
     }
 }
