@@ -5,19 +5,12 @@ public class RentalManagement<T> where T : class, IRentalItem
     public List<Rental> RentedVehicles { get; private set; }
     public List<Car> Cars { get; private set; }
     public List<Bike> Bikes { get; private set; }
-    private INotification _notificationSystem;
 
-    public RentalManagement(List<Rental> rentedVehicles, List<Car> cars, List<Bike> bikes, INotification notificationSystem)
+    public RentalManagement(List<Rental> rentedVehicles, List<Car> cars, List<Bike> bikes)
     {
         RentedVehicles = rentedVehicles;
         Cars = cars;
         Bikes = bikes;
-        _notificationSystem = notificationSystem;
-    }
-
-    public void NotifyCustomer(string contactDetails, string message)
-    {
-        _notificationSystem.SendMessage(contactDetails, message);
     }
 
     public void AddVehicle(Rental vehicle)

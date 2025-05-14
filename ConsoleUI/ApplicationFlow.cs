@@ -26,7 +26,7 @@ public class ApplicationFlow
         _smsNotification = new SmsNotification();
 
         _customerManagement = new CustomerManagement(_customers);
-        _rentalManagement = new RentalManagement<IRentalItem>(new List<Rental>(), _cars, _bikes, _emailNotification);
+        _rentalManagement = new RentalManagement<IRentalItem>(new List<Rental>(), _cars, _bikes);
 
         _customerConsoleUI = new CustomerConsoleUI(_customerManagement);
         _rentalConsoleUI = new RentalConsoleUI<IRentalItem>(_rentalManagement, _customerManagement);
