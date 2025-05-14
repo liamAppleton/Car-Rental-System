@@ -16,6 +16,10 @@
 
 ---
 
+![example car display](./assets/exampleCarDisplay.png)
+
+---
+
 ## **Concepts and Techniques Used:**
 
 - Object-Oriented Programming (OOP)
