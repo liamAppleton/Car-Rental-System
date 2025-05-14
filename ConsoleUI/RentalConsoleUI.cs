@@ -72,26 +72,36 @@ public class RentalConsoleUI<T> where T : class, IRentalItem
 
     public void RemoveInputRental()
     {
-        string[] vehiclesDetails = _rentalManagement.Cars.Cast<IRentalItem>()
-        .Concat(_rentalManagement.Bikes.Cast<IRentalItem>())
-        .Select(vehicle => vehicle.GetVehicleDetails())
-        .ToArray();
+        try
+        {
+            string[] vehiclesDetails = _rentalManagement.Cars.Cast<IRentalItem>()
+                .Concat(_rentalManagement.Bikes.Cast<IRentalItem>())
+                .Where(vehicle => vehicle.IsRented)
+                .Select(vehicle => vehicle.GetVehicleDetails())
+                .ToArray();
 
-        var rental = AnsiConsole.Prompt(
-            new SelectionPrompt<string>()
-            .Title("Select a rental to remove: ")
-            .PageSize(10)
-            .MoreChoicesText("[grey](Move up and down to view more rentals)[/]")
-            .AddChoices(vehiclesDetails)
-        );
+            var rental = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                .Title("Select a rental to remove: ")
+                .PageSize(10)
+                .MoreChoicesText("[grey](Move up and down to view more rentals)[/]")
+                .AddChoices(vehiclesDetails)
+            );
 
-        Regex id = new Regex(@"- ([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$");
-        Match idMatch = id.Match(rental);
+            Regex id = new Regex(@"- ([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$");
+            Match idMatch = id.Match(rental);
 
-        Rental? selectedRental = _rentalManagement.RentedVehicles
-            .FirstOrDefault(r => r.RentalId == Guid.Parse(idMatch.Groups[1].Value));
+            Rental? selectedRental = _rentalManagement.RentedVehicles
+                .FirstOrDefault(r =>
+                (r.Car != null ? r.Car.CarId : r.Bike.BikeId)
+                == Guid.Parse(idMatch.Groups[1].Value));
 
-        _rentalManagement.RemoveVehicle(selectedRental);
+            _rentalManagement.RemoveVehicle(selectedRental);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("No rentals available.");
+        }
     }
 
     public void DisplayAllRentalVehicles()
