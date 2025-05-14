@@ -47,12 +47,12 @@ public class RentalConsoleUI<T> where T : class, IRentalItem
         else
         {
             bike = _rentalManagement.Bikes
-                .FirstOrDefault(b => b.BikeId == Guid.Parse(idMatch.Groups[0].Value));
+                .FirstOrDefault(b => b.BikeId == Guid.Parse(idMatch.Groups[1].Value));
         }
 
         var customerName = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
-            .Title($"Select a customer to rent [{vehicle}]")
+            .Title($"Select a customer to rent [[{vehicle}]]")
             .PageSize(10)
             .MoreChoicesText("[grey](Move up and down to view more customers)[/]")
             .AddChoices(_customerManagement.Customers
