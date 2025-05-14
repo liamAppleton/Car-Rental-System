@@ -30,10 +30,10 @@ public class ApplicationFlow
 
     private void DisplayAppIntro()
     {
-        AnsiConsole.MarkupLine("\n\n[bold green underline]Welcome to Car Rental Enterprise[/]\n");
-        AnsiConsole.MarkupLine("[blue]==========================================[/]");
+        AnsiConsole.MarkupLine("\n\n[bold green]Car Rental Enterprise[/]");
+        AnsiConsole.MarkupLine("[blue]====================================================[/]");
         AnsiConsole.MarkupLine("[yellow bold]Manage your fleet of cars and bikes seamlessly[/]");
-        AnsiConsole.MarkupLine("[blue]==========================================[/]\n");
+        AnsiConsole.MarkupLine("[blue]====================================================[/]\n");
         AnsiConsole.MarkupLine("[dim italic]Press [green]Enter[/] to continue...[/]");
 
         Console.ReadLine();
