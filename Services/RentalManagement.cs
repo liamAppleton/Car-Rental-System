@@ -23,7 +23,18 @@ public class RentalManagement<T> where T : class, IRentalItem
     public void AddVehicle(Rental vehicle)
     {
         RentedVehicles.Add(vehicle);
-        string displayMessage = vehicle.Car != null ? vehicle.Car.GetVehicleDetails() : vehicle.Bike.GetVehicleDetails();
+
+        string displayMessage;
+        if (vehicle.Car != null)
+        {
+            displayMessage = vehicle.Car.GetVehicleDetails();
+            vehicle.Car.Rent();
+        }
+        else
+        {
+            displayMessage = vehicle.Bike.GetVehicleDetails();
+            vehicle.Bike.Rent();
+        }
 
         Console.WriteLine($"{displayMessage} added to rentals.");
     }
@@ -31,7 +42,7 @@ public class RentalManagement<T> where T : class, IRentalItem
     public void RemoveVehicle(Rental vehicle)
     {
         string displayMessage = vehicle.Car != null ? vehicle.Car.GetVehicleDetails() : vehicle.Bike.GetVehicleDetails();
-
+        // Return() needs to be called here
         if (!RentedVehicles.Contains(vehicle))
         {
             Console.WriteLine($"{displayMessage} not currently rented.");
