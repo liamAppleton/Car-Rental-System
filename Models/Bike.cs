@@ -1,14 +1,14 @@
 namespace rentalapp;
 
-public class Bike : IInfoDisplay, IRentalItem
+public class Bike : IRentalItem
 {
-    public int BikeId { get; private set; }
+    public Guid BikeId { get; private set; }
     public string Type { get; private set; }
-    private string Make { get; set; }
+    public string Make { get; private set; }
     public string Colour { get; private set; }
     public bool IsRented { get; private set; }
 
-    public Bike(int bikeId, string type, string make, string colour)
+    public Bike(Guid bikeId, string type, string make, string colour)
     {
         BikeId = bikeId;
         Type = type;
@@ -17,9 +17,9 @@ public class Bike : IInfoDisplay, IRentalItem
         IsRented = false;
     }
 
-    public string DisplayDetails()
+    public string GetVehicleDetails()
     {
-        return $"[{Type}] {Make} ({Colour})";
+        return $"[[{Type}]] {Make} ({Colour}) - {BikeId}";
     }
 
     public void Rent()
@@ -27,7 +27,7 @@ public class Bike : IInfoDisplay, IRentalItem
         if (!IsRented)
         {
             IsRented = true;
-            Console.WriteLine($"[{Type}] {BikeId} ({Colour} {Make}) is now rented.");
+            Console.WriteLine($"[[{Type}]] {BikeId} ({Colour} {Make}) is now rented.");
         }
         else Console.WriteLine("Bike is already being rented.");
     }
@@ -37,7 +37,7 @@ public class Bike : IInfoDisplay, IRentalItem
         if (IsRented)
         {
             IsRented = false;
-            Console.WriteLine($"[{Type}] {BikeId} ({Colour} {Make}) is now returned.");
+            Console.WriteLine($"[[{Type}]]{BikeId} ({Colour} {Make}) is now returned.");
         }
         else Console.WriteLine("Bike is already returned.");
     }

@@ -1,16 +1,18 @@
+using Spectre.Console;
+
 namespace rentalapp;
 
-public class Car : IInfoDisplay, IRentalItem
+public class Car : IRentalItem
 {
-    public int CarId { get; private set; }
+    public Guid CarId { get; private set; }
     public string Type { get; private set; }
-    private string Make { get; set; }
-    private string Model { get; set; }
-    private int Year { get; set; }
+    public string Make { get; private set; }
+    public string Model { get; private set; }
+    public int Year { get; private set; }
     public string Colour { get; private set; }
     public bool IsRented { get; private set; }
 
-    public Car(int carId, string type, string make, string model, int year, string colour)
+    public Car(Guid carId, string type, string make, string model, int year, string colour)
     {
         CarId = carId;
         Type = type;
@@ -21,9 +23,9 @@ public class Car : IInfoDisplay, IRentalItem
         IsRented = false;
     }
 
-    public string DisplayDetails()
+    public string GetVehicleDetails()
     {
-        return $"[{Type}] {Make} | {Model} ({Colour}) [{Year}]";
+        return $"[[{Type}]] {Make} | {Model} ({Colour}) [[{Year}]] - {CarId}";
     }
 
     public void Rent()
@@ -31,7 +33,6 @@ public class Car : IInfoDisplay, IRentalItem
         if (!IsRented)
         {
             IsRented = true;
-            Console.WriteLine($"[{Type}] {CarId} ({Colour} {Make} {Model}) is now rented.");
         }
         else Console.WriteLine("Car is already being rented.");
     }
@@ -41,7 +42,6 @@ public class Car : IInfoDisplay, IRentalItem
         if (IsRented)
         {
             IsRented = false;
-            Console.WriteLine($"[{Type}] {CarId} ({Colour} {Make} {Model}) is now returned.");
         }
         else Console.WriteLine("Car is already returned.");
     }

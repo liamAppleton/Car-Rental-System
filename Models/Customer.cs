@@ -1,33 +1,33 @@
 namespace rentalapp;
 
-public class Customer : IInfoDisplay
+public class Customer
 {
-    private int CustomerId { get; set; }
+    public Guid CustomerId { get; private set; }
     public string Name { get; private set; }
-    private int Age { get; set; }
-    private Car? CurrentlyRenting { get; set; }
+    public int Age { get; private set; }
+    private IRentalItem? CurrentlyRenting { get; set; }
 
-    public Customer(int customerId, string name, int age)
+    public Customer(Guid customerId, string name, int age)
     {
         CustomerId = customerId;
         Name = name;
         Age = age;
     }
 
-    public string DisplayDetails()
+    public string GetDetails()
     {
         return $"{CustomerId}: {Name} ({Age})";
     }
 
-    public void ViewCurrentlyRenting()
+    public string GetCurrentlyRenting()
     {
         if (CurrentlyRenting != null)
         {
-            CurrentlyRenting.DisplayDetails();
+            return CurrentlyRenting.GetVehicleDetails();
         }
         else
         {
-            Console.WriteLine($"{Name} is not currently renting.");
+            return "Not currently renting";
         }
 
     }

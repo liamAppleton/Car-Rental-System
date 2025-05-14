@@ -7,4 +7,6 @@ public interface IRentalItem
     void Rent();
 
     void Return();
+
+    string GetVehicleDetails();
 }
