@@ -12,8 +12,6 @@ public class ApplicationFlow
     private CustomerConsoleUI _customerConsoleUI;
     private RentalConsoleUI<IRentalItem> _rentalConsoleUI;
     private VehicleQueryConsoleUI<IRentalItem> _vehicleQueryConsoleUI;
-    private EmailNotification _emailNotification;
-    private SmsNotification _smsNotification;
 
     public ApplicationFlow()
     {
@@ -21,9 +19,6 @@ public class ApplicationFlow
         _cars = dataSeeder.GetCars();
         _bikes = dataSeeder.GetBikes();
         _customers = dataSeeder.GetCustomers();
-
-        _emailNotification = new EmailNotification();
-        _smsNotification = new SmsNotification();
 
         _customerManagement = new CustomerManagement(_customers);
         _rentalManagement = new RentalManagement<IRentalItem>(new List<Rental>(), _cars, _bikes);
@@ -175,7 +170,6 @@ public class ApplicationFlow
                         "Vehicle display options",
                         "Customer operations",
                         "Rental operations",
-                        "Send a message",
                         "Quit"
                 })
             );
@@ -190,9 +184,6 @@ public class ApplicationFlow
                     break;
                 case "Rental operations":
                     HandleRentalOperations();
-                    break;
-                case "Send a message":
-                    //
                     break;
                 case "Quit":
                     isQuit = true;
