@@ -33,7 +33,6 @@ public class Car : IRentalItem
         if (!IsRented)
         {
             IsRented = true;
-            Console.WriteLine($"[[{Type}]] {CarId} ({Colour} {Make} {Model}) is now rented.");
         }
         else Console.WriteLine("Car is already being rented.");
     }
@@ -43,7 +42,6 @@ public class Car : IRentalItem
         if (IsRented)
         {
             IsRented = false;
-            Console.WriteLine($"[[{Type}]] {CarId} ({Colour} {Make} {Model}) is now returned.");
         }
         else Console.WriteLine("Car is already returned.");
     }
