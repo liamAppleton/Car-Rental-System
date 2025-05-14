@@ -43,10 +43,10 @@ public class VehicleQueryConsoleUI<T> where T : class, IRentalItem
             rental => rental.CustomerId,
             customer => customer.CustomerId,
             (rental, customer) => new { rental, customer })
-            .Where(rentalCustomer => (type == "CAR" ?
-            rentalCustomer.rental.Car.CarId.ToString() :
-            rentalCustomer.rental.Bike.BikeId.ToString())
-            == id)
+            .Where(rentalCustomer =>
+                (type == "CAR" && rentalCustomer.rental.Car != null && rentalCustomer.rental.Car.CarId.ToString() == id) ||
+                (type == "BIKE" && rentalCustomer.rental.Bike != null && rentalCustomer.rental.Bike.BikeId.ToString() == id)
+            )
             .Select(rentalCustomer => rentalCustomer.customer.Name)
             .FirstOrDefault() ?? "N/A";
     }
