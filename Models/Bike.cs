@@ -37,7 +37,7 @@ public class Bike : IRentalItem
         if (IsRented)
         {
             IsRented = false;
-            Console.WriteLine($"[[{Type}] ]{BikeId} ({Colour} {Make}) is now returned.");
+            Console.WriteLine($"[[{Type}]]{BikeId} ({Colour} {Make}) is now returned.");
         }
         else Console.WriteLine("Bike is already returned.");
     }
