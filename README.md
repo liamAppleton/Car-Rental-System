@@ -1,8 +1,8 @@
-# Car Rental App - C# Console Application
+# Car Rental System - C# Console Application
 
 **Overview**
 
-**Car Rental App** is a console-based application built in **C#** to consolidate my understanding of C# fundamentals. The application is designed for a car rental business manager to handle various operations like tracking rentals, managing customers, and viewing vehicle inventory in a structured and user-friendly console interface using **Spectre.Console**.
+**Car Rental System** is a console-based application built in **C#** to consolidate my understanding of C# fundamentals. The application is designed for a car rental business manager to handle various operations like tracking rentals, managing customers, and viewing vehicle inventory in a structured and user-friendly console interface using **Spectre.Console**.
 
 ---
 
