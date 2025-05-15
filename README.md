@@ -11,7 +11,6 @@
 - **Manage Customers:** Add and remove customers.
 - **Manage Rentals:** Rent and return cars and bikes.
 - **View Inventory:** Display all cars and bikes, filter by availability.
-- **Notifications:** Send email and SMS notifications for rentals.
 - **Data Simulation:** Pre-seeded customer and vehicle data for testing.
 
 ---
